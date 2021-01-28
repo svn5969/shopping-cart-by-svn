@@ -84,9 +84,8 @@
    <script>
       function handleProductChange(product, isIncrease) {
          const productInput = document.getElementById(product + 'Count')
-         productCount = getInputValue(product)
-         // const productCount = parseInt(productInput.value)
-
+         const productCount = parseInt(productInput.value)   // >> This line related with before add getInputValue function bcz its also have parseInt 
+         //const newValueCount = valueInputCount + 1
          let newValueCount = productCount
          if (isIncrease == true) {
             newProductCount = productCount + 1
@@ -96,6 +95,7 @@
 
          }
          productInput.value = newProductCount
+         //const valueTotal = newValueCount * 59
          let productTotal = 0
          if (product == 'phone') {
             productTotal = newProductCount * 1219
@@ -108,22 +108,80 @@
          calculateTotal()
       }
 
-      function calculateTotal() {
 
+      //I am use this code in another way . for that i just call the function inside the tag instead of declare a id on them.
+      // document.getElementById('plusButton').addEventListener('click', function () {
+      //    handleProductChange(true)
+      // })
+
+      // document.getElementById('minusButton').addEventListener('click', function () {
+      //    handleProductChange(false)
+      // })
+
+      // here i saw the similar work for two part so i comment out this portion to making a single portion of both  two part also changes inside tags  onclick variables. and also this part is connected with upper comment part.
+
+      // function handleProductChange(isIncrease) {
+      //    const valueInput = document.getElementById('valueCount')
+      //    const valueInputCount = parseInt(valueInput.value)
+      //    //const newValueCount = valueInputCount + 1
+      //    let newValueCount = valueInputCount
+      //    if (isIncrease == true) {
+      //       newValueCount = valueInputCount + 1
+      //    }
+      //    if (isIncrease == false && valueInputCount > 0) {
+      //       newValueCount = valueInputCount - 1
+
+      //    }
+      //    valueInput.value = newValueCount
+
+      //    const valueTotal = newValueCount * 59
+      //    document.getElementById('valueTotal').innerText = '$' + valueTotal
+      // }
+
+
+      // plus button eventHandle elaborately
+
+      // const addProduct = document.getElementById('plusButton')
+      // addProduct.addEventListener('click', function () {
+      //    const valueInput = document.getElementById('valueCount')
+      //    const valueInputCount = parseInt(valueInput.value)
+      //    const newValueCount = valueInputCount + 1
+      //    valueInput.value = newValueCount
+
+      //    const valueTotal = newValueCount * 59
+      //    document.getElementById('valueTotal').innerText = '$' + valueTotal
+
+      // })
+      // //Minus Event handler elaborately
+
+      // const reduceProduct = document.getElementById('minusButton')
+      // reduceProduct.addEventListener('click', function () {
+      //    const valueInput = document.getElementById('valueCount')
+      //    const valueInputCount = parseInt(valueInput.value)
+      //    const newValueCount = valueInputCount - 1
+      //    valueInput.value = newValueCount
+      //    const valueTotal = newValueCount * 59
+      //    document.getElementById('valueTotal').innerText = '$' + valueTotal
+      //})
+
+      function calculateTotal() {
+         // const phoneInput = document.getElementById('phoneTotal')
+         // const phoneCount = parseInt(phoneInput.value)
          const phoneCount = getInputValue('phone')
          const valueCount = getInputValue('value')
 
+         // const valueInput = document.getElementById('valueTotal').value
+         // const valueCount = parseInt(valueInput.value)
+
          const totalPrice = phoneCount * 1219 + valueCount * 59
          document.getElementById('total-price').innerText = '$' + totalPrice
-
       }
 
       function getInputValue(product) {
          const productInput = document.getElementById(product + 'Count')
          const productCount = parseInt(productInput.value)
-         return productCount
-
-
+         //return productCount
+         console.log(productCount);
 
       }
 
