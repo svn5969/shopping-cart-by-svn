@@ -25,11 +25,13 @@
 
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input type="text" class="form-control text-center" value="1">
-                           <button class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button onclick=" handleProductChange('phone',false)" class="btn btn-default"><i
+                                 class="fas fa-minus"></i></button>
+                           <input id="phoneCount" type="text" class="form-control text-center" value="1">
+                           <button onclick=" handleProductChange('phone',true)" class="btn btn-default"><i
+                                 class="fas fa-plus"></i></button>
                         </div>
-                        <h5>$1219</h5>
+                        <h5 id="phoneTotal">$1219</h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -43,12 +45,14 @@
                      </div>
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input type="text" class="form-control text-center" value="1">
-                           <button class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button onclick=" handleProductChange('value',false)" class="btn btn-default"><i
+                                 class="fas fa-minus"></i></button>
+                           <input id="valueCount" type="text" class="form-control text-center" value="1">
+                           <button onclick=" handleProductChange('value',true)" class="btn btn-default"><i
+                                 class="fas fa-plus"></i></button>
 
                         </div>
-                        <h5>$59</h5>
+                        <h5 id="valueTotal">$59</h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -77,6 +81,90 @@
          </div>
       </div>
    </section>
+   <script>
+      function handleProductChange(product, isIncrease) {
+         const productInput = document.getElementById(product + 'Count')
+         const productCount = parseInt(productInput.value)
+         //const newValueCount = valueInputCount + 1
+         let newValueCount = productCount
+         if (isIncrease == true) {
+            newProductCount = productCount + 1
+         }
+         if (isIncrease == false && productCount > 0) {
+            newProductCount = productCount - 1
+
+         }
+         productInput.value = newProductCount
+         //const valueTotal = newValueCount * 59
+         let productTotal = 0
+         if (product == 'phone') {
+            productTotal = newProductCount * 1219
+         }
+         if (product == 'value') {
+            productTotal = newProductCount * 59
+         }
+
+         document.getElementById(product + 'Total').innerText = '$' + productTotal
+      }
+
+
+      //I am use this code in another way . for that i just call the function inside the tag instead of declare a id on them.
+      // document.getElementById('plusButton').addEventListener('click', function () {
+      //    handleProductChange(true)
+      // })
+
+      // document.getElementById('minusButton').addEventListener('click', function () {
+      //    handleProductChange(false)
+      // })
+
+      // here i saw the similar work for two part so i comment out this portion to making a single portion of both  two part
+
+      // function handleProductChange(isIncrease) {
+      //    const valueInput = document.getElementById('valueCount')
+      //    const valueInputCount = parseInt(valueInput.value)
+      //    //const newValueCount = valueInputCount + 1
+      //    let newValueCount = valueInputCount
+      //    if (isIncrease == true) {
+      //       newValueCount = valueInputCount + 1
+      //    }
+      //    if (isIncrease == false && valueInputCount > 0) {
+      //       newValueCount = valueInputCount - 1
+
+      //    }
+      //    valueInput.value = newValueCount
+
+      //    const valueTotal = newValueCount * 59
+      //    document.getElementById('valueTotal').innerText = '$' + valueTotal
+      // }
+
+
+      // plus button eventHandle elaborately
+
+      // const addProduct = document.getElementById('plusButton')
+      // addProduct.addEventListener('click', function () {
+      //    const valueInput = document.getElementById('valueCount')
+      //    const valueInputCount = parseInt(valueInput.value)
+      //    const newValueCount = valueInputCount + 1
+      //    valueInput.value = newValueCount
+
+      //    const valueTotal = newValueCount * 59
+      //    document.getElementById('valueTotal').innerText = '$' + valueTotal
+
+      // })
+      // //Minus Event handler elaborately
+
+      // const reduceProduct = document.getElementById('minusButton')
+      // reduceProduct.addEventListener('click', function () {
+      //    const valueInput = document.getElementById('valueCount')
+      //    const valueInputCount = parseInt(valueInput.value)
+      //    const newValueCount = valueInputCount - 1
+      //    valueInput.value = newValueCount
+      //    const valueTotal = newValueCount * 59
+      //    document.getElementById('valueTotal').innerText = '$' + valueTotal
+      //})
+
+
+   </script>
 </body>
 
 </html>
